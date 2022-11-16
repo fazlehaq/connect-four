@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    background-color:honeydew;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1{
+    font-size: 2.5rem;
+}
+
+main{
+    display: grid;
+    place-items: center;
+    height: 75vh;
+}
+
+/* player Detials */
+.player-details{
+    display: flex;
+    width: 95%;
+    max-width: 800px;
+    justify-content: space-around;
+    margin: 1rem 1rem 0 1rem;
+    font-size: 1.5rem;
+}
+
+.player-details h3:nth-of-type(1){
+    /* justify-self:start; */
+    /* margin-left: 1rem; */
+}
+
+.player-details h3:nth-of-type(2){
+    /* justify-self:start; */
+    /* margin-right: 2rem; */
+}
+
+[data-p1-color]{
+    color: red;
+}
+[data-p2-color]{
+    color: green;
+}
+/* board */
+.game-board{
+    display: grid;
+    border:  1.5px solid gray;
+}
+
+.row{
+    display: grid;
+    grid-template-rows: repeat(1,40px); 
+    grid-template-columns: repeat(7,40px); 
+}
+
+.cell{
+    /* background-color: cornflowerblue; */
+    /* border: 1px solid gainsboro; */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell.red::before{
+    background: red;
+}
+
+.cell.green::before{
+    background-color: green;
+}
+
+
+.cell.red,.cell.green{
+    cursor: not-allowed;
+    transition: 200ms ease-out;
+}
+
+.cell.red::before,
+.cell.green::before,
+.cell:not(.green):not(.red):hover::before ,
+.cell:not(.green):not(.red):hover::before{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    border-radius: 50%;
+    content: '';
+}
+
+
+.game-board.red .cell:not(.green):not(.red):hover::before{
+    background-color: rgba(255, 0, 0, 0.5);
+    
+}
+.game-board.green .cell:not(.green):not(.red):hover::before{
+    background-color: rgba(0, 255, 0, 0.5);
+}
+
+.game-over-element{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: #000;
+    color: white;
+    gap: 2rem;
+}
+
+.msg{
+    font-size: 1.75rem;
+}
+
+.msg::first-letter{
+    text-transform: capitalize;
+}
+
+#restart-button{
+    padding: 0.25em 0.5em;
+    font-size: 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#restart-button:hover , #restart-button:focus{
+    background-color: black ;
+    color: whitesmoke;
+    border: 2px solid white;
+    transform: scale(1.08);
+    transition: 100ms ;
+
+}
